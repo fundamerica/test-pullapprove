@@ -1,0 +1,141 @@
+version: 3
+
+#extends: https://api.github.com/repos/example/pullapprove-config/contents/.pullapprove.yml
+
+pullapprove_conditions:
+  - "'WIP' not in title"
+  - "base.ref == 'staging'"
+  - "'hotfix' not in labels"
+#  - "'*travis*' in statuses.succeeded"
+
+notifications:
+  - when: pull_request.opened
+#    # only need to send this to external-contributors
+#    if: "author_association in ['FIRST_TIMER', 'FIRST_TIME_CONTRIBUTOR', 'CONTRIBUTOR']"
+#    comment: >
+#      Hey @{{ author }}, please make sure your tests pass and you have looked everything over. Then we will review.
+#
+#      Thanks for the PR!
+  - when: pullapprove.approved
+    comment: "The review is completed. @{{ author }}, please merge this in when ready."
+
+groups:
+  compliance:
+    conditions:
+      - "'compliance' in labels"
+    reviewers:
+      teams: [ team-l2c2 ]
+      users:
+        - thorncp
+
+  custody:
+    conditions:
+      - "'indemnity' in labels"
+    reviewers:
+      teams: [ team-l2c2 ]
+      users:
+        - jfedger
+
+  indemnity:
+    conditions:
+      - "'indemnity' in labels"
+    reviewers:
+      teams: [ pt-indemnity ]
+      users:
+        - dollerbill
+      tech_lead:
+        - mculp
+
+  issuance:
+    conditions:
+      - "'indemnity' in labels"
+    reviewers:
+      teams: [ pt-indemnity ]
+      users:
+        - dollerbill
+      tech_lead:
+        - mculp
+
+  ledger:
+    conditions:
+      - "'ledger' in labels"
+    reviewers:
+      teams: [ team-l2c2 ]
+      users:
+        - jfedger
+
+  liquidity:
+    conditions:
+      - "'liquidity' in labels"
+    reviewers:
+      teams: [ team-l2c2 ]
+      users:
+        - mculp
+
+  other: # security, integrator/ dev experience, FA, internal tool/ backoffice
+    conditions:
+      - "'other' in labels"
+    reviewers:
+      teams: [ developers ]
+      users:
+        - dollerbill
+      tech_lead:
+        - mculp
+
+  rails: # make sure we can add label for rails and assign based on rails group
+    # Aron opens PR, require review from anyone in rails besides Aron, after approval require
+    # review from Jibran, or Joe, in that order
+    # QA will review separately for now
+    conditions:
+      - "'indemnity' in labels"
+    reviewers:
+      teams: [ pt-indemnity ]
+      users:
+        - dollerbill
+      tech_lead:
+        - JibranKalia
+
+  settlement:
+    conditions:
+      - "'settlement' in labels"
+    reviewers:
+      teams: [ pt-settlement ]
+      users:
+        - dollerbill
+      tech_lead:
+        - mculp
+
+
+
+  dev:
+    reviewers:
+      users:
+        - username
+      teams:
+        - developers
+    reviews:
+      required: 2  # number of approvals required from this group
+      request: 1  # number of review requests sent at a time
+      request_order: random  # "random" or "given"
+    labels:
+      approved: "Code review approved"
+
+  senior:
+    conditions:
+      - "'*migrations*' in files"  # only review if "migrations" files have been edited
+    reviewers:
+      users:
+        - joe
+        - aron
+        - matt
+      teams:
+        - database
+
+  rails_techlead:
+    conditions:
+      # only asked to review once the other 2 groups are finished (or not applicable)
+      - "'developers' in groups.passing"
+      - "'database' in groups.passing"
+    reviewers:
+      users:
+        - JibranKalia
