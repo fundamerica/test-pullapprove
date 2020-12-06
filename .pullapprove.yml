@@ -68,7 +68,7 @@ groups:
     conditions:
       - "'other' in labels"
     reviewers:
-      teams: [ team-l2c2, team-rails ]
+      teams: [ team-l2c2, team-iris ]
       users:
         - dollerbill
 
