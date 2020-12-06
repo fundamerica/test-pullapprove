@@ -7,10 +7,10 @@ pullapprove_conditions:
 
 notifications:
   - when: pull_request.opened
-#    # only need to send this to external-contributors
-#    if: "author_association in ['FIRST_TIMER', 'FIRST_TIME_CONTRIBUTOR', 'CONTRIBUTOR']"
-    comment: >
-      @{{ author }}, please make sure rubocop and the entire testsuite passes.
+    comment: "The review is completed. @{{ author }}, please merge this in when ready."
+#
+#    comment: >
+#      @{{ author }}, please make sure rubocop and the entire testsuite passes.
 
   - when: pullapprove.approved
     comment: "The review is completed. @{{ author }}, please merge this in when ready."
@@ -36,17 +36,17 @@ groups:
     conditions:
       - "'indemnity' in labels"
     reviewers:
-      teams: [ team-l2c2 ]
+      teams: [ team-iris ]
       users:
-        - dollerbill
+        - jhakoopian
 
   issuance:
     conditions:
       - "'issuance' in labels"
     reviewers:
-      teams: [ team-l2c2 ]
+      teams: [ team-iris ]
       users:
-        - dollerbill
+        - JibranKalia
 
   ledger:
     conditions:
@@ -59,27 +59,26 @@ groups:
   liquidity:
     conditions:
       - "'liquidity' in labels"
+    reviews:
+      required: 2
+      request: 2
     reviewers:
-      teams: [ team-l2c2 ]
+      teams: team-rails
       users:
         - mculp
+        - dollerbill
 
   other: # security, integrator/ dev experience, FA, internal tool/ backoffice
     conditions:
       - "'other' in labels"
     reviewers:
       teams: [ team-l2c2, team-iris ]
-      users:
-        - dollerbill
 
-  rails: # make sure we can add label for rails and assign based on rails group
-    # Aron opens PR, require review from anyone in rails besides Aron, after approval require
-    # review from Jibran, or Joe, in that order
-    # QA will review separately for now
+  rails:
     conditions:
       - "'rails' in labels"
     reviewers:
-      teams: [ team-l2c2 ]
+      teams: [ team-iris ]
       users:
         - JibranKalia
 
@@ -87,9 +86,8 @@ groups:
     conditions:
       - "'settlement' in labels"
     reviewers:
-      teams: [ team-l2c2 ]
+      teams: [ team-iris ]
       users:
-        - dollerbill
 
 #  dev:
 #    reviewers:
@@ -104,16 +102,6 @@ groups:
 #    labels:
 #      approved: "Code review approved"
 
-#  senior:
-#    conditions:
-#      - "'*migrations*' in files"  # only review if "migrations" files have been edited
-#    reviewers:
-#      users:
-#        - joe
-#        - aron
-#        - matt
-#      teams:
-#        - database
 
   rails_techlead:
     conditions:
