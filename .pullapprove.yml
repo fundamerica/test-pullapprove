@@ -63,7 +63,7 @@ groups:
       required: 2
       request: 2
     reviewers:
-      teams: [ team-rails ]
+      teams: [ team-l2c2 ]
       users:
         - mculp
 
