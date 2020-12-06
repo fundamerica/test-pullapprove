@@ -60,8 +60,8 @@ groups:
     conditions:
       - "'liquidity' in labels"
     reviews:
-      required: 2
-      request: 2
+      required: 1
+      request: 1
     reviewers:
       #teams: [ team-l2c2 ]
       users:
@@ -111,7 +111,7 @@ groups:
 #      approved: "Ready to merge"
     reviewers:
       users:
-        - JibranKalia
+        - thorncp
 
   rails_techlead:
     conditions:
