@@ -68,7 +68,7 @@ groups:
     conditions:
       - "'other' in labels"
     reviewers:
-      teams: [ developers ]
+      teams: [ team-l2c2, team-rails ]
       users:
         - dollerbill
 
@@ -91,29 +91,29 @@ groups:
       users:
         - dollerbill
 
-  dev:
-    reviewers:
-      users:
-        - username
-      teams:
-        - developers
-    reviews:
-      required: 2  # number of approvals required from this group
-      request: 1  # number of review requests sent at a time
-      request_order: random  # "random" or "given"
-    labels:
-      approved: "Code review approved"
+#  dev:
+#    reviewers:
+#      users:
+#        - username
+#      teams:
+#        - developers
+#    reviews:
+#      required: 2  # number of approvals required from this group
+#      request: 1  # number of review requests sent at a time
+#      request_order: random  # "random" or "given"
+#    labels:
+#      approved: "Code review approved"
 
-  senior:
-    conditions:
-      - "'*migrations*' in files"  # only review if "migrations" files have been edited
-    reviewers:
-      users:
-        - joe
-        - aron
-        - matt
-      teams:
-        - database
+#  senior:
+#    conditions:
+#      - "'*migrations*' in files"  # only review if "migrations" files have been edited
+#    reviewers:
+#      users:
+#        - joe
+#        - aron
+#        - matt
+#      teams:
+#        - database
 
   rails_techlead:
     conditions:
