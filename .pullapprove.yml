@@ -63,9 +63,9 @@ groups:
       required: 2
       request: 2
     reviewers:
-      teams: [ team-l2c2 ]
+      #teams: [ team-l2c2 ]
       users:
-        - mculp
+        - dollerbill
 
   other: # security, integrator/ dev experience, FA, internal tool/ backoffice
     conditions:
@@ -103,11 +103,22 @@ groups:
 #      approved: "Code review approved"
 
 
+  liquidity_techlead:
+    conditions:
+      - "'liquidity' in labels"
+      - "'liquidity' in groups.passing"
+    labels:
+      approved: "Ready to merge"
+    reviewers:
+      users:
+        - mculp
+
   rails_techlead:
     conditions:
-      # only asked to review once the other 2 groups are finished (or not applicable)
-      - "'developers' in groups.passing"
-      - "'database' in groups.passing"
+      - "'rails' in labels"
+      - "'rails' in groups.passing"
+    labels:
+      approved: "Ready to merge"
     reviewers:
       users:
         - JibranKalia
