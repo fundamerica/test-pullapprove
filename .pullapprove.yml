@@ -26,7 +26,7 @@ groups:
 
   custody:
     conditions:
-      - "'indemnity' in labels"
+      - "'custody' in labels"
     reviewers:
       teams: [ team-l2c2 ]
       users:
@@ -36,15 +36,15 @@ groups:
     conditions:
       - "'indemnity' in labels"
     reviewers:
-      teams: [ pt-indemnity ]
+      teams: [ team-l2c2 ]
       users:
         - dollerbill
 
   issuance:
     conditions:
-      - "'indemnity' in labels"
+      - "'issuance' in labels"
     reviewers:
-      teams: [ pt-indemnity ]
+      teams: [ team-l2c2 ]
       users:
         - dollerbill
 
@@ -77,9 +77,9 @@ groups:
     # review from Jibran, or Joe, in that order
     # QA will review separately for now
     conditions:
-      - "'indemnity' in labels"
+      - "'rails' in labels"
     reviewers:
-      teams: [ pt-indemnity ]
+      teams: [ team-l2c2 ]
       users:
         - JibranKalia
 
@@ -87,7 +87,7 @@ groups:
     conditions:
       - "'settlement' in labels"
     reviewers:
-      teams: [ pt-settlement ]
+      teams: [ team-l2c2 ]
       users:
         - dollerbill
 
