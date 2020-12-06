@@ -65,7 +65,7 @@ groups:
     reviewers:
       teams: [ team-rails ]
       users:
-        - dollerbill
+        - mculp
 
   other: # security, integrator/ dev experience, FA, internal tool/ backoffice
     conditions:
@@ -86,7 +86,6 @@ groups:
       - "'settlement' in labels"
     reviewers:
       teams: [ team-iris ]
-      users:
 
 #  dev:
 #    reviewers:
