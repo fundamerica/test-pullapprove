@@ -107,8 +107,8 @@ groups:
     conditions:
       - "'liquidity' in labels"
       - "'liquidity' in groups.passing"
-    labels:
-      approved: "Ready to merge"
+#    labels:
+#      approved: "Ready to merge"
     reviewers:
       users:
         - JibranKalia
