@@ -86,6 +86,8 @@ groups:
       - "'settlement' in labels"
     reviewers:
       teams: [ team-iris ]
+      users:
+        - ~davidzhangpt
 
 #  dev:
 #    reviewers:
