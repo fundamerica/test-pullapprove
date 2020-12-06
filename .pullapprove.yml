@@ -64,7 +64,9 @@ groups:
       request: 2
     reviewers:
       teams: [ team-rails ]
-      users: [ mculp, dollerbill ]
+      users:
+      - mculp
+      - dollerbill
 
   other: # security, integrator/ dev experience, FA, internal tool/ backoffice
     conditions:
