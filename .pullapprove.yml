@@ -111,7 +111,7 @@ groups:
       approved: "Ready to merge"
     reviewers:
       users:
-        - mculp
+        - JibranKalia
 
   rails_techlead:
     conditions:
