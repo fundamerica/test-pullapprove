@@ -7,7 +7,10 @@ pullapprove_conditions:
 
 notifications:
   - when: pull_request.opened
-    comment: "The review is completed. @{{ author }}, please merge this in when ready."
+    comment: |
+      @{{ author }}, thanks for the PR! The review will start once
+      the tests and CI checks have passed. You'll also need to sign our
+      CLA if you haven't before.
 #
 #    comment: >
 #      @{{ author }}, please make sure rubocop and the entire testsuite passes.
@@ -107,23 +110,60 @@ groups:
 ####################
 # Each tech lead is set as their own group that will be tagged
 # after their corresponding team has approved the initial reviews.
-  liquidity_techlead:
+  compliance_techlead:
     conditions:
-      - len(pullapprove.approved) > 1
-      - "'liquidity' in labels"
-      - "'liquidity' in groups.passing"
-#    labels:
-#      approved: "Ready to merge"
+      - "'compliance' in labels"
+      - "'compliance' in groups.passing"
     reviewers:
       users:
         - thorncp
+
+  custody_techlead:
+    conditions:
+      - "'custody' in labels"
+      - "'custody' in groups.passing"
+    reviewers:
+      users:
+        - jfedger
+
+  indemnity_techlead:
+    conditions:
+      - "'indemnity' in labels"
+      - "'indemnity' in groups.passing"
+    reviewers:
+      users:
+        - jhakoopian
+
+  issuance_techlead:
+    conditions:
+      - "'issuance' in labels"
+      - "'issuance' in groups.passing"
+    reviewers:
+      users:
+        - JibranKalia
+
+  ledger_techlead:
+    conditions:
+      - "'ledger' in labels"
+      - "'ledger' in groups.passing"
+    reviewers:
+      users:
+        - jfedger
+
+  liquidity_techlead:
+    conditions:
+      - "'liquidity' in labels"
+      - "'liquidity' in groups.passing"
+    reviewers:
+      users:
+        - mculp
 
   rails_techlead:
     conditions:
       - "'rails' in labels"
       - "'rails' in groups.passing"
-    labels:
-      approved: "Ready to merge"
+#    labels:
+#      approved: "Ready to merge"
     reviewers:
       users:
         - JibranKalia
