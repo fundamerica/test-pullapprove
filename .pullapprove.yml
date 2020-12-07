@@ -102,9 +102,14 @@ groups:
 #    labels:
 #      approved: "Code review approved"
 
-
+####################
+#### Team Leads ####
+####################
+# Each tech lead is set as their own group that will be tagged
+# after their corresponding team has approved the initial reviews.
   liquidity_techlead:
     conditions:
+      - len(users.approved) > 3
       - "'liquidity' in labels"
       - "'liquidity' in groups.passing"
 #    labels:
