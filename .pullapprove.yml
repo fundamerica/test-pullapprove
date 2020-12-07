@@ -109,7 +109,7 @@ groups:
 # after their corresponding team has approved the initial reviews.
   liquidity_techlead:
     conditions:
-      - len(users_approved) > 3
+      - len(pullapprove.approved) > 1
       - "'liquidity' in labels"
       - "'liquidity' in groups.passing"
 #    labels:
