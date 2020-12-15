@@ -17,11 +17,11 @@ pullapprove_conditions:
 
 notifications:
   - when: pull_request.opened
-    if: "author_association in ['FIRST_TIMER', 'FIRST_TIME_CONTRIBUTOR']"
-      comment: |
-        Hey @{{ author }}, thanks for opening your first pull request!
-        Please make sure to read the handbook section on
-        [contributing](https://primetrust-handbook.netlify.app/docs/#/?id=contributing-to-the-codebase)
+#    if: "author_association in ['FIRST_TIMER', 'FIRST_TIME_CONTRIBUTOR']"
+#      comment: |
+#        Hey @{{ author }}, thanks for opening your first pull request!
+#        Please make sure to read the handbook section on
+#        [contributing](https://primetrust-handbook.netlify.app/docs/#/?id=contributing-to-the-codebase)
 
     comment: |
       @{{ author }}, thanks for the PR! The review will start once
