@@ -73,12 +73,12 @@ groups:
     conditions:
       - "'liquidity' in labels"
     reviews:
-      required: 1 #2
-      request: 1 #2
+      required: 2
+      request: 2
     reviewers:
-      #teams: [ team-l2c2 ]
-      users:
-        - dollerbill
+      teams: [ team-l2c2 ]
+#      users:
+#        - dollerbill
 
   other: # security, integrator/ dev experience, FA, internal tool/ backoffice
     conditions:
