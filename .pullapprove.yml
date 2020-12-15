@@ -40,10 +40,11 @@ groups:
   custody:
     conditions:
       - "'custody' in labels"
+    reviews:
+      required: 2
+      request: 2
     reviewers:
       teams: [ team-l2c2 ]
-      users:
-        - jfedger
 
   indemnity:
     conditions:
@@ -132,6 +133,7 @@ groups:
     conditions:
       - "'custody' in labels"
       - "'custody' in groups.passing"
+      - - len(groups.approved.include('team-l2c2')) >= 2
     reviewers:
       users:
         - jfedger
