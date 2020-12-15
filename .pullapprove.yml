@@ -7,7 +7,7 @@ pullapprove_conditions:
   - condition: "body and '- [ ]' not in body"
     unmet_status: pending
     explanation: "Please finish all the tasks first"
-  - condition: "'WIP' in title"
+  - condition: "'WIP' not in title"
     unmet_status: pending
     explanation: "Work in progress"
   - condition: "not draft"
@@ -73,8 +73,8 @@ groups:
     conditions:
       - "'liquidity' in labels"
     reviews:
-      required: 1
-      request: 1
+      required: 1 #2
+      request: 1 #2
     reviewers:
       #teams: [ team-l2c2 ]
       users:
