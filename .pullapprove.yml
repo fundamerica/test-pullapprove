@@ -133,7 +133,7 @@ groups:
     conditions:
       - "'custody' in labels"
       - "'custody' in groups.passing"
-      - - len(groups.approved.include('team-l2c2')) >= 2
+      - len(groups.approved.include('team-l2c2')) >= 2
     reviewers:
       users:
         - jfedger
