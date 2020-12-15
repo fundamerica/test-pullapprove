@@ -17,16 +17,19 @@ pullapprove_conditions:
 
 notifications:
   - when: pull_request.opened
+    if: "author_association in ['FIRST_TIMER', 'FIRST_TIME_CONTRIBUTOR']"
+      comment: |
+        Hey @{{ author }}, thanks for opening your first pull request!
+        Please make sure to read the handbook section on
+        [contributing](https://primetrust-handbook.netlify.app/docs/#/?id=contributing-to-the-codebase).
+
     comment: |
       @{{ author }}, thanks for the PR! The review will start once
-      the tests and CI checks have passed. You'll also need to sign our
-      CLA if you haven't before.
-#
-#    comment: >
-#      @{{ author }}, please make sure rubocop and the entire testsuite passes.
+      all tasks have been completed the proper labels have been applied.
 
   - when: pullapprove.approved
-    comment: "The review is completed. @{{ author }}, please merge this in when ready."
+    comment: "Test tech_lead name: @{{ groups.approved.include('*_techlead') }}"
+#    comment: "The review is completed. @{{ author }}, please merge this in when ready."
 
 groups:
   compliance:
