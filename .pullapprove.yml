@@ -1,9 +1,19 @@
 version: 3
 
 pullapprove_conditions:
-  - "'WIP' not in title"
+#  - "'WIP' not in title"
   - "base.ref == 'staging'"
   - "'hotfix' not in labels"
+  - condition: "body and '- [ ]' not in body"
+    unmet_status: pending
+    explanation: "Please finish all the tasks first"
+  - condition: "'WIP' in title"
+    unmet_status: pending
+    explanation: "Work in progress"
+  - condition: "not draft"
+    unmet_status: pending
+    explanation: "Work in progress"
+
 
 notifications:
   - when: pull_request.opened
@@ -154,6 +164,9 @@ groups:
     conditions:
       - "'liquidity' in labels"
       - "'liquidity' in groups.passing"
+      - len(groups.approved.include('team-l2c2')) >= 2
+      # this group is asked to review if no previous groups match this PR
+      - "len(groups.active) == 0"  # or "not groups.active"
     reviewers:
       users:
         - mculp
