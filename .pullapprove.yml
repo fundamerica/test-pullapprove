@@ -125,7 +125,7 @@ groups:
   compliance_techlead:
     conditions:
       - "'compliance' in labels"
-      - "'team-l2c2' in groups.passing"
+      - "'compliance' in groups.passing"
     labels:
       approved: "Merge me blazer"
 
@@ -136,7 +136,7 @@ groups:
   custody_techlead:
     conditions:
       - "'custody' in labels"
-      - "'team-l2c2' in groups.passing"
+      - "'custody' in groups.passing"
     reviewers:
       users:
         - jfedger
