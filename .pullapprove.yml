@@ -25,7 +25,7 @@ notifications:
 
 
 
-  - when: pullapprove.approved
+  - when: pullapprove.approved # groups.users.first? users.in.group ?
     comment: "Test tech_lead name: @{{ groups.approved.include('*_techlead') }}"
 #    comment: "The review is completed. @{{ author }}, please merge this in when ready."
 
@@ -125,7 +125,10 @@ groups:
   compliance_techlead:
     conditions:
       - "'compliance' in labels"
-      - "'compliance' in groups.passing"
+      - "'team-l2c2' in groups.passing"
+    labels:
+      approved: "Merge me blazer"
+
     reviewers:
       users:
         - thorncp
@@ -133,8 +136,7 @@ groups:
   custody_techlead:
     conditions:
       - "'custody' in labels"
-      - "'custody' in groups.passing"
-      - len(groups.approved.include('team-l2c2')) >= 2
+      - "'team-l2c2' in groups.passing"
     reviewers:
       users:
         - jfedger
@@ -142,7 +144,7 @@ groups:
   indemnity_techlead:
     conditions:
       - "'indemnity' in labels"
-      - "'indemnity' in groups.passing"
+      - "'team-iris' in groups.passing"
     reviewers:
       users:
         - jhakoopian
@@ -150,7 +152,7 @@ groups:
   issuance_techlead:
     conditions:
       - "'issuance' in labels"
-      - "'issuance' in groups.passing"
+      - "'team-iris' in groups.passing"
     reviewers:
       users:
         - JibranKalia
@@ -158,7 +160,7 @@ groups:
   ledger_techlead:
     conditions:
       - "'ledger' in labels"
-      - "'ledger' in groups.passing"
+      - "'team-l2c2' in groups.passing"
     reviewers:
       users:
         - jfedger
@@ -166,8 +168,9 @@ groups:
   liquidity_techlead:
     conditions:
       - "'liquidity' in labels"
-      - "'liquidity' in groups.passing"
-      - len(groups.approved.include('team-l2c2')) >= 2
+      - "'team-l2c2' in groups.passing"
+#      - len(groups.approved) >= 2
+#      - len(groups.approved.include('team-l2c2')) >= 2
       # this group is asked to review if no previous groups match this PR
       - "len(groups.active) == 0"  # or "not groups.active"
     reviewers:
@@ -177,7 +180,7 @@ groups:
   rails_techlead:
     conditions:
       - "'rails' in labels"
-      - "'rails' in groups.passing"
+      - "'team-iris' in groups.passing"
 #    labels:
 #      approved: "Ready to merge"
     reviewers:
