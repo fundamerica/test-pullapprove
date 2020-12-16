@@ -26,17 +26,20 @@ notifications:
 
 
   - when: pullapprove.approved # groups.users.first? users.in.group ?
-    comment: "Test tech_lead name: @{{ groups.approved.include('*_techlead') }}"
+    comment: "Test tech_lead name: @{{ groups.approved.include('*_techlead').users.first.name }}"
 #    comment: "The review is completed. @{{ author }}, please merge this in when ready."
 
 groups:
   compliance:
     conditions:
       - "'compliance' in labels"
+    labels:
+      approved: "CR Approved" # When Compliance techlead approves PR, label "CR Approved" is added
+    reviews:
+      required: 2
+      request: 2
     reviewers:
       teams: [ team-l2c2 ]
-      users:
-        - thorncp
 
   custody:
     conditions:
@@ -127,7 +130,7 @@ groups:
       - "'compliance' in labels"
       - "'compliance' in groups.passing"
     labels:
-      approved: "Merge me blazer"
+      approved: "Merge me blazer" # When Compliance techlead approves PR, label "Merge me blazer" is added
 
     reviewers:
       users:
