@@ -26,7 +26,7 @@ notifications:
 
 
   - when: pullapprove.approved # groups.users.first? users.in.group ?
-    comment: "Test tech_lead name: @{{ groups.approved.include('*_techlead').users.first.name }}"
+    comment: "name test: @{{ groups.approved.include('*_techlead').users.first.name }}"
 #    comment: "The review is completed. @{{ author }}, please merge this in when ready."
 
 groups:
